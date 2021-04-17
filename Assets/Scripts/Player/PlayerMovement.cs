@@ -40,20 +40,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Jump();
- 
-        if(Input.GetKey(KeyCode.Q))
+
+        MoveX();
+        if (cameraChange.gameProjection == eGameProjection.pers)
+        {
+            MoveZ();
+        }
+
+        if (Input.GetKey(KeyCode.Q))
         {
             Dash();
-            WaitForSeconds();
+            Invoke("WaitForSeconds", 5.0f);
         }
-        else
-        {
-            MoveX();
-            if (cameraChange.gameProjection == eGameProjection.pers)
-            {
-                MoveZ();
-            }
-        }
+
+       
     }
 
     void MoveX()
