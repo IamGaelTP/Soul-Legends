@@ -11,13 +11,16 @@ public enum eGameProjection
 public class CameraChange : MonoBehaviour
 {
     Camera cam;
+    PlayerMovement playerMov;
 
     public eGameProjection gameProjection = eGameProjection.orto;
+
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
+        playerMov = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,8 @@ public class CameraChange : MonoBehaviour
             {
                 cam.orthographic = true;
                 gameProjection = eGameProjection.orto;
+                Vector3 trans = playerMov.GetComponent<Transform>().position;
+                playerMov.GetComponent<Transform>().position = new Vector3(trans.x, trans.y, -3.82f);
             }
             else
             {
