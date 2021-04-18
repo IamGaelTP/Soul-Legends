@@ -82,6 +82,10 @@ public class PlayerCollision : MonoBehaviour
                 questGiver.OpenQuestWindow();
                 Debug.Log("GIVING QUEST");
             }
+            else if (lloronaDialogue.GetComponent<DialogueManager>().index >= lloronaDialogue.GetComponent<DialogueManager>().sentences.Length)
+            {
+                trigger.GetComponent<Animator>().SetBool("isIdle", true);
+            }
         }
 
         if (trigger.gameObject.CompareTag("2DZone"))
