@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int healthPoints;
-    private int maxHealthPoints = 100;
+    internal int healthPoints;
+    internal int maxHealthPoints = 200;
+
+    public PlayerSpawn spawn;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +30,8 @@ public class PlayerHealth : MonoBehaviour
         //Play Audio
         AudioManager.instance.Play("Death");
         this.gameObject.SetActive(false);
+
+        //Revive
+        spawn.Revive();
     }
 }

@@ -61,7 +61,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (col.gameObject.CompareTag("Picos"))
         {
-            playerHealth.TakeDamage(100);
+            playerHealth.TakeDamage(1000);
 
             //Play Audio
             AudioManager.instance.Play("Take Damage");

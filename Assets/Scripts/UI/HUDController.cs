@@ -14,8 +14,6 @@ public class HUDController : MonoBehaviour
     void Update()
     {
 
-        Cursor.visible = false;
-
         if(Input.GetKeyDown(KeyCode.M) && !isAlreadyOpen)
         {
             Time.timeScale = 0f;
