@@ -16,12 +16,25 @@ public class QuestGiver : MonoBehaviour
     public void OpenQuestWindow()
     {
         questWindow.SetActive(true);
-        quest.isActive = true;
 
         titleText.text = quest.title;
         descriptionText.text = quest.description.ToString();
         objectsTakenText.text = quest.objectsTaken.ToString();
         objectsRequiredText.text = quest.objectsRequired.ToString();
+
+        ActiveQuest();
     }
 
+    public void UpdateQuestWindow()
+    {
+        objectsTakenText.text = quest.objectsTaken.ToString();
+        objectsRequiredText.text = quest.objectsRequired.ToString();
+    }
+
+
+    public void ActiveQuest()
+    {
+        quest.isActive = true;
+        player.quest = quest;
+    }
 }

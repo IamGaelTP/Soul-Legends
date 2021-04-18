@@ -11,4 +11,20 @@ public class Quest
     public string description;
     public int objectsTaken;
     public int objectsRequired;
+
+    public bool isReached()
+    {
+        return (objectsTaken >= objectsRequired);
+    }
+
+    public void LloronaChildTaken()
+    {
+        objectsTaken++;
+    }
+
+    public void QuestComplete()
+    {
+        isActive = false;
+        Debug.Log(title + " was completed!");
+    }
 }

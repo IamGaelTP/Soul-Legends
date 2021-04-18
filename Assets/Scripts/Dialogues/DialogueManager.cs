@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
-    private int index;
+    internal int index;
     public int stopIndex;
     public float typingDelay;
     public static bool isDialogueEnd = false;
@@ -40,6 +40,7 @@ public class DialogueManager : MonoBehaviour
         if (isDialogueEnd == true)
         {
             textDisplay.text = "";
+            Debug.Log(index);
 
             if (index <= stopIndex)
                 StartCoroutine(Type());
