@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     CameraChange cameraChange;
     Rigidbody rb;
+    Animator anim;
 
     Vector3 movement;
     public float speed = 5;
@@ -23,12 +24,16 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     [SerializeField] private int direction;
 
+    bool isWalkingX = false;
+    bool isWalkingZ = false;
+
 
 
     void Awake()
     {
         cameraChange = FindObjectOfType<CameraChange>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -45,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
         if (cameraChange.gameProjection == eGameProjection.pers)
         {
             MoveZ();
+        }
+
+        if (!isWalkingX && !isWalkingZ)
+        {
+            //Play Animation
+            anim.SetBool("isRunning", false);
         }
 
         if (Input.GetKey(KeyCode.Q))
@@ -65,6 +76,20 @@ public class PlayerMovement : MonoBehaviour
 
         //Translate
         transform.Translate(movement);
+
+        //Play Animation
+        if(inputX != 0)
+        {
+            isWalkingX = true;
+            if (isWalkingX == true && isGrounded)
+            {
+                anim.SetBool("isRunning", true);
+            }
+        }
+        else
+        {
+            isWalkingX = false;
+        }
     }
 
     void MoveZ()
@@ -76,6 +101,20 @@ public class PlayerMovement : MonoBehaviour
 
         //Translate
         transform.Translate(movement);
+
+        //Play Animation
+        if (inputZ != 0)
+        {
+            isWalkingZ = true;
+            if (isWalkingZ == true && isGrounded)
+            {
+                anim.SetBool("isRunning", true);
+            }
+        }
+        else
+        {
+            isWalkingZ = false;
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -83,10 +122,14 @@ public class PlayerMovement : MonoBehaviour
         if(col.gameObject.tag == "Floor")
         {
             isGrounded = true;
+            
             if(canJumpTwice)
             {
                 extraJumps = 1;
             }
+
+            //Play Animation
+            anim.SetBool("isJumping", false);
         }
 
         
@@ -98,11 +141,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+
+            //Play Animation
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isJumping", true);
         }
         else if (Input.GetButtonDown("Jump") && !isGrounded && extraJumps > 0)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             extraJumps--;
+
+            //Play Animation
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isJumping", true);
         }
     }
 

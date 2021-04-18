@@ -13,14 +13,25 @@ public class CameraChange : MonoBehaviour
     Camera cam;
     PlayerMovement playerMov;
 
-    public eGameProjection gameProjection = eGameProjection.orto;
+    public eGameProjection gameProjection = eGameProjection.pers;
 
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cam = GetComponent<Camera>();
         playerMov = FindObjectOfType<PlayerMovement>();
+    }
+
+    void Start()
+    {
+        if(gameProjection == eGameProjection.pers)
+        {
+            cam.orthographic = false;
+        }
+        else
+        {
+            cam.orthographic = true;
+        }
     }
 
     // Update is called once per frame
