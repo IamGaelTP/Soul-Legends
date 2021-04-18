@@ -18,6 +18,7 @@ TagManager:
   - Enemy
   - ArmHit
   - Picos
+  - 3DFullZone
   layers:
   - Default
   - TransparentFX

@@ -198,11 +198,12 @@ public class PlayerCollision : MonoBehaviour
         if (trigger.gameObject.CompareTag("2DZone"))
         {
             CameraChange.canChange = true;
+            AudioManager.instance.Play("2D Theme");
         }
 
-        if (trigger.gameObject.CompareTag("3DZone"))
+        if (trigger.gameObject.CompareTag("3DFullZone"))
         {
-            CameraChange.canChange = true;
+            AudioManager.instance.Play("3D Theme");
         }
     }
 
