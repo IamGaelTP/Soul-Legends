@@ -14,8 +14,6 @@ public class CameraFollow : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.5f;
 
-    public Vector3 minValues, maxValues;
-
     [Range(1f, 10f)]
     public float otherSmoothFactor = 3.0f;
 

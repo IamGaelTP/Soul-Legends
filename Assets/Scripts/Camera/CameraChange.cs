@@ -10,11 +10,12 @@ public enum eGameProjection
 
 public class CameraChange : MonoBehaviour
 {
-    Camera cam;
+    internal Camera cam;
     PlayerMovement playerMov;
     public GameObject persObjects;
+    public static bool canChange = true;
 
-    public eGameProjection gameProjection = eGameProjection.pers;
+    public eGameProjection gameProjection = eGameProjection.orto;
 
 
     void Awake()
@@ -41,11 +42,12 @@ public class CameraChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab) && canChange)
         {
             if (cam.orthographic == false)
             {
                 cam.orthographic = true;
+                cam.nearClipPlane = -15f;
                 gameProjection = eGameProjection.orto;
                 persObjects.SetActive(false);
 
@@ -55,6 +57,7 @@ public class CameraChange : MonoBehaviour
             else
             {
                 cam.orthographic = false;
+                cam.nearClipPlane = 0.01f;
                 gameProjection = eGameProjection.pers;
                 persObjects.SetActive(true);
             } 

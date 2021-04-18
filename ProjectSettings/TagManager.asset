@@ -9,6 +9,11 @@ TagManager:
   - Espiritu
   - Hijo Llorona
   - Rama Plat
+  - Llorona Wall
+  - 2DZone
+  - 3DZone
+  - GetLoc
+  - Item
   layers:
   - Default
   - TransparentFX
