@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Move
         float inputX = Input.GetAxis("Horizontal");
+        speed = 6;
         movement = new Vector3(inputX * speed, 0,0);
         movement *= Time.deltaTime;
 
@@ -107,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Move
         float inputZ = Input.GetAxis("Vertical");
+        speed = 6;
         movement = new Vector3(0, 0, inputZ * speed);
         movement *= Time.deltaTime;
 
@@ -152,6 +154,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
 
+            speed = 3;
+
             //Play Animation
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", true);
@@ -160,6 +164,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             extraJumps--;
+
+            speed = 3;
 
             //Play Animation
             anim.SetBool("isRunning", false);

@@ -23,6 +23,17 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.CompareTag("Rama Plat"))
+        {
+            if (this.gameObject.transform.position.y < col.gameObject.transform.position.y)
+            {
+                col.gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider trigger)
     {
         if (trigger.gameObject.CompareTag("Llorona"))
