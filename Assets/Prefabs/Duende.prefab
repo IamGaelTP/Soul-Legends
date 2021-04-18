@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 5144525317417700250}
   - component: {fileID: 5144525317417700251}
   - component: {fileID: 5144525317417700248}
+  - component: {fileID: 2199388739883307525}
   - component: {fileID: 1241773204687043700}
   m_Layer: 0
   m_Name: Duende
-  m_TagString: Espiritu
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +138,18 @@ MonoBehaviour:
   navMeshAgent: {fileID: 5144525317417700250}
   target: {fileID: 0}
   timetoWait: 10
+--- !u!114 &2199388739883307525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144525317417700254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f3a0aacd0b257240b574e71a1a8d8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1241773204687043700
 Animator:
   serializedVersion: 3

@@ -354,7 +354,7 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
-  - name: Take Special Object
+  - name: Take Charm
     clip: {fileID: 8300000, guid: 4d8dff429d7cb7148b27f9eba29ca142, type: 3}
     volume: 1
     pitch: 1

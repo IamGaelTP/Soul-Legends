@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     public GameObject dialogueCanvas;
     public GameObject lloronaDialogue;
 
+
     private void Awake()
     {
         questGiver = FindObjectOfType<QuestGiver>();
@@ -74,6 +75,17 @@ public class PlayerCollision : MonoBehaviour
         if (trigger.gameObject.CompareTag("Item"))
         {
             Destroy(trigger.gameObject);
+
+            //Play Sound
+            AudioManager.instance.Play("Take Object");
+        }
+
+        if (trigger.gameObject.CompareTag("Charm"))
+        {
+            Destroy(trigger.gameObject);
+
+            //Play Sound
+            AudioManager.instance.Play("Take Charm");
         }
 
     }
