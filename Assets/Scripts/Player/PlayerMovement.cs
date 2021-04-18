@@ -159,6 +159,9 @@ public class PlayerMovement : MonoBehaviour
             //Play Animation
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", true);
+
+            //Play Sound
+            AudioManager.instance.Play("Jump");
         }
         else if (Input.GetButtonDown("Jump") && !isGrounded && extraJumps > 0)
         {
@@ -170,6 +173,9 @@ public class PlayerMovement : MonoBehaviour
             //Play Animation
             anim.SetBool("isRunning", false);
             anim.SetBool("isJumping", true);
+
+            //Play Sound
+            AudioManager.instance.Play("Jump");
         }
     }
 

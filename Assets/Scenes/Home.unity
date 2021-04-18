@@ -332,7 +332,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad8e7357581bd441b210062bf4bf1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 52d147da47864084b825607f229fe811, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Take Damage
+    clip: {fileID: 8300000, guid: 858f5aaf3a3dacd4ea1af59a880a9d4e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Take Object
+    clip: {fileID: 8300000, guid: 642471396b298dc41ba18e9aad183311, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Take Special Object
+    clip: {fileID: 8300000, guid: 4d8dff429d7cb7148b27f9eba29ca142, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f0c3c8d78ce16a54f9b64d9377038ba3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!4 &100273065
 Transform:
   m_ObjectHideFlags: 0

@@ -71,6 +71,11 @@ public class PlayerCollision : MonoBehaviour
             this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, -3.82f);
         }
 
+        if (trigger.gameObject.CompareTag("Item"))
+        {
+            Destroy(trigger.gameObject);
+        }
+
     }
 
     private void OnTriggerStay(Collider trigger)
