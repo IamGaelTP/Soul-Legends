@@ -16,7 +16,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Hijo Llorona"))
-        {
+        { 
             questGiver.quest.LloronaChildTaken();
             questGiver.UpdateQuestWindow();
             Destroy(col.gameObject);
@@ -30,7 +30,7 @@ public class PlayerCollision : MonoBehaviour
             dialogueCanvas.SetActive(true);
 
             //On Quest Completed
-            if(questGiver.quest.isReached())
+            if (questGiver.quest.isReached())
             {
                 questGiver.quest.QuestComplete();
                 lloronaDialogue.GetComponent<DialogueManager>().stopIndex = lloronaDialogue.GetComponent<DialogueManager>().sentences.Length;
@@ -46,6 +46,17 @@ public class PlayerCollision : MonoBehaviour
             {
                 questGiver.OpenQuestWindow();
                 Debug.Log("GIVING QUEST");
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider trigger)
+    {
+        if (trigger.gameObject.CompareTag("Rama Plat"))
+        {
+            if (this.gameObject.transform.position.y > trigger.transform.position.y)
+            {
+                trigger.GetComponent<BoxCollider>().isTrigger = false;
             }
         }
     }

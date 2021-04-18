@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.5f;
 
+    public Vector3 minValues, maxValues;
+
     [Range(1f, 10f)]
     public float otherSmoothFactor = 3.0f;
 
@@ -36,7 +38,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (cameraChange.gameProjection == eGameProjection.pers)
             FollowOn3D();
-        else //if(cameraChange.gameProjection == eGameProjection.orto && playerMov.isGrounded)
+        else 
             FollowOn2D();
     }
 
@@ -53,6 +55,7 @@ public class CameraFollow : MonoBehaviour
     void FollowOn2D()
     {
         Vector3 playerPosition = playerTrans.position + otherOffset;
+       
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, playerPosition, otherSmoothFactor * Time.fixedDeltaTime);
         transform.position = playerPosition;
     }

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     CameraChange cameraChange;
     Rigidbody rb;
     Animator anim;
+    SpriteRenderer render;
 
     Vector3 movement;
     public float speed = 5;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         cameraChange = FindObjectOfType<CameraChange>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -90,6 +92,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isWalkingX = false;
         }
+
+        if(inputX > 0)
+        {
+            render.flipX = false;
+        }
+        else if (inputX < 0)
+        {
+            render.flipX = true;
+        }
     }
 
     void MoveZ()
@@ -119,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Floor")
+        if(col.gameObject.CompareTag("Floor") || col.gameObject.CompareTag("Rama Plat"))
         {
             isGrounded = true;
             
@@ -131,8 +142,7 @@ public class PlayerMovement : MonoBehaviour
             //Play Animation
             anim.SetBool("isJumping", false);
         }
-
-        
+  
     }
 
     void Jump()
