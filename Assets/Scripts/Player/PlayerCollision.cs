@@ -8,6 +8,9 @@ public class PlayerCollision : MonoBehaviour
     CameraChange cameraChange;
     public GameObject dialogueCanvas;
     public GameObject lloronaDialogue;
+    public GameObject charm;
+
+    public Vector3 tp;
 
 
     private void Awake()
@@ -24,6 +27,8 @@ public class PlayerCollision : MonoBehaviour
             questGiver.quest.LloronaChildTaken();
             questGiver.UpdateQuestWindow();
             Destroy(col.gameObject);
+
+            this.gameObject.transform.position = tp;
         }
 
         if (col.gameObject.CompareTag("Llorona Wall"))
@@ -98,10 +103,17 @@ public class PlayerCollision : MonoBehaviour
             {
                 questGiver.OpenQuestWindow();
                 Debug.Log("GIVING QUEST");
+
+                //Play Sound
+                AudioManager.instance.Play("");
             }
-            else if (lloronaDialogue.GetComponent<DialogueManager>().index >= lloronaDialogue.GetComponent<DialogueManager>().sentences.Length)
+            else if (lloronaDialogue.GetComponent<DialogueManager>().index > 5)
             {
                 trigger.GetComponent<Animator>().SetBool("isIdle", true);
+            }
+            else if((lloronaDialogue.GetComponent<DialogueManager>().index >= 8))
+            {
+                charm.SetActive(true);
             }
         }
 
