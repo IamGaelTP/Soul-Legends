@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    internal GameObject gameObj;
+    Animator anim;
 
-    void DestroyEnemy()
+    private void Awake()
     {
-        Destroy(gameObj);
+        anim = GetComponentInParent<Animator>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("isAttacking", true);
+        }
     }
 }

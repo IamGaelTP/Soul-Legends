@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Death()
     {
+        //Play Audio
+        AudioManager.instance.Play("Death");
         this.gameObject.SetActive(false);
     }
 }

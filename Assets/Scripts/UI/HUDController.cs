@@ -13,6 +13,9 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Cursor.visible = false;
+
         if(Input.GetKeyDown(KeyCode.M) && !isAlreadyOpen)
         {
             Time.timeScale = 0f;

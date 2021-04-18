@@ -6,6 +6,8 @@ public class PlayerCollision : MonoBehaviour
 {
     QuestGiver questGiver;
     CameraChange cameraChange;
+    PlayerHealth playerHealth;
+    WinCondition winScript;
     public GameObject dialogueCanvas;
     public GameObject lloronaDialogue;
     public GameObject charm;
@@ -17,6 +19,8 @@ public class PlayerCollision : MonoBehaviour
     {
         questGiver = FindObjectOfType<QuestGiver>();
         cameraChange = FindObjectOfType<CameraChange>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        winScript = FindObjectOfType<WinCondition>();
     }
 
 
@@ -36,6 +40,38 @@ public class PlayerCollision : MonoBehaviour
             if (lloronaDialogue.GetComponent<DialogueManager>().index == 5)
             {
                 col.gameObject.SetActive(false);
+            }
+        }
+
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            playerHealth.TakeDamage(20);
+
+            //Play Audio
+            AudioManager.instance.Play("Take Damage");
+
+
+            playerHealth.isAlive();
+
+            if(!playerHealth.isAlive())
+            {
+                playerHealth.Death();
+            }
+        }
+
+        if (col.gameObject.CompareTag("Picos"))
+        {
+            playerHealth.TakeDamage(100);
+
+            //Play Audio
+            AudioManager.instance.Play("Take Damage");
+
+
+            playerHealth.isAlive();
+
+            if (!playerHealth.isAlive())
+            {
+                playerHealth.Death();
             }
         }
     }
@@ -70,6 +106,17 @@ public class PlayerCollision : MonoBehaviour
             cameraChange.gameProjection = eGameProjection.orto;
             cameraChange.persObjects.SetActive(false);
             CameraChange.canChange = false;
+
+            //Play Audio
+            if (lloronaDialogue.GetComponent<DialogueManager>().index <= 5)
+            {
+                AudioManager.instance.Play("Llorona Crying");
+            }
+            else
+            {
+                AudioManager.instance.Stop("Llorona Crying");
+            }
+         
         }
 
         if (trigger.gameObject.CompareTag("GetLoc"))
@@ -79,6 +126,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (trigger.gameObject.CompareTag("Item"))
         {
+            winScript.itemsCounter++;
             Destroy(trigger.gameObject);
 
             //Play Sound
@@ -87,6 +135,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (trigger.gameObject.CompareTag("Charm"))
         {
+            winScript.charmsCounter++;
             Destroy(trigger.gameObject);
 
             //Play Sound
@@ -134,6 +183,8 @@ public class PlayerCollision : MonoBehaviour
         {
             CameraChange.canChange = true;
             dialogueCanvas.SetActive(false);
+
+            AudioManager.instance.Stop("Llorona Crying");
         }
 
         if (trigger.gameObject.CompareTag("Rama Plat"))

@@ -17,6 +17,7 @@ TagManager:
   - Charm
   - Enemy
   - ArmHit
+  - Picos
   layers:
   - Default
   - TransparentFX
